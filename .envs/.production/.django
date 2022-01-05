@@ -1,0 +1,18 @@
+# Django
+DJANGO_SECRET_KEY=PB3aGvTmCkzaLGRAxDc3aMayKTPTDd5usT8gw4pCmKOk5AlJjh12pTrnNgQyOHCH
+DJANGO_ADMIN_URL=admin
+DJANGO_SETTINGS_MODULE=config.settings.production
+
+# Mailgun
+MAILGUN_API_KEY=b5621328a2c4de8f2fefc2f864410302-3d0809fb-801e4255
+MAILGUN_DOMAIN=https://api.mailgun.net/v3/sandbox8b11faf81a7e4e7bb765e96df08aeb8f.mailgun.org
+
+# Redis
+REDIS_URL=redis://redis:6379/0
+
+# Flower
+CELERY_FLOWER_USER=AkSCzUUkrubMopHkMlHHIiFnUzKhIidG
+CELERY_FLOWER_PASSWORD=jspxQGdwrs9VbGLmn5FmXRAGqNt5D6osRgqggNJl1JgcdcCYZdCf7Ch0jcgG0nH7
+
+#AWS
+DJANGO_AWS_STORAGE_BUCKET_NAME=coeadminapp
