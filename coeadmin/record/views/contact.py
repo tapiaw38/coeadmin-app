@@ -1,7 +1,7 @@
 """ Contact views. """
 
 # Django REST Framework.
-from rest_framework import viewsets, status
+from rest_framework import viewsets, mixins, status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
@@ -17,7 +17,11 @@ from coeadmin.record.models.positive import Positive
 from coeadmin.record.paginations import StandardResultsSetPagination
 
 
-class ContactViewSet(viewsets.ModelViewSet):
+class ContactViewSet(mixins.ListModelMixin,
+                    mixins.CreateModelMixin,
+                    mixins.RetrieveModelMixin,
+                    mixins.UpdateModelMixin,
+                    viewsets.GenericViewSet):
     """ Contacts view set. """
 
     serializer_class = ContactModelSerializer

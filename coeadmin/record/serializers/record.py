@@ -11,8 +11,8 @@ from coeadmin.record.models import (
     Isolation,
 ) 
 
-
 # Serializers
+from coeadmin.record.serializers.person import PersonModelSerializer
 
 
 class IsolationSerializer(serializers.ModelSerializer):
@@ -129,3 +129,24 @@ class PositiveModelSerializer(serializers.ModelSerializer):
         isolation.save()
 
         return instance
+
+
+class ListPositiveSerializer(serializers.ModelSerializer):
+    """ List positive serializer. """
+
+    person = PersonModelSerializer()
+
+    class Meta:
+        """ Meta class. """
+
+        model = Positive
+        fields = (
+            'id',
+            'user',
+            'person',
+            'positivity_date',
+            'variant_type',
+            'laboratory',
+            'contacts_count',
+            'isolation',
+        )

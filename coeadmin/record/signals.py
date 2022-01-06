@@ -10,22 +10,15 @@ from coeadmin.record.models import (
 )
 
 # Utilities
-from datetime import datetime
-
 
 
 @receiver(post_save, sender=Positive)
-def update_isolation(sender, instance, **kwargs):
+def update_contacts(sender, instance, **kwargs):
     
-    if instance.isolation.high_insulation == True:
-        instance.isolation.high_insulation_date = datetime.today().strftime('%Y-%m-%d')
-    
-    elif instance.isolation.high_insulation == False:
-        instance.isolation.high_insulation_date = None
+    instance.con
 
 @receiver(post_save, sender=Positive)
 def save_isolation(sender, instance, **kwargs):
-    instance.isolation.save()
-    
-    return instance.isolation
+    instance.save()
+    return instance
 
