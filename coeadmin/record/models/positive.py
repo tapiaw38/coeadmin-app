@@ -51,4 +51,4 @@ class Positive(BaseModel):
     def __str__(self):
         """ the positive person with covid returns. """
 
-        return 'The person {} is positive'.format(self.person)
+        return 'The person id: {}, {} is positive'.format(self.id,self.person)

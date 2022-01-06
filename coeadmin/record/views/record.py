@@ -6,10 +6,8 @@ from rest_framework.permissions import IsAuthenticated
 
 # Serializers
 from coeadmin.record.serializers.record import PositiveModelSerializer
-from coeadmin.record.serializers.person import PersonModelSerializer
 
 # Models
-from coeadmin.record.models.person import Person
 from coeadmin.record.models.positive import Positive
 
 # Utilities
@@ -20,14 +18,5 @@ class RecordViewSet(viewsets.ModelViewSet):
 
     queryset = Positive.objects.all()
     serializer_class = PositiveModelSerializer
-    permission_classes = (IsAuthenticated,)
-    pagination_class = StandardResultsSetPagination
-
-
-class PersonViewSet(viewsets.ModelViewSet):
-    """ Person view set. """
-
-    queryset = Person.objects.all()
-    serializer_class = PersonModelSerializer
     permission_classes = (IsAuthenticated,)
     pagination_class = StandardResultsSetPagination

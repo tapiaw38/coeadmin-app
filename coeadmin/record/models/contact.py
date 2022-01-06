@@ -18,7 +18,7 @@ class Contact(BaseModel):
 
     person = models.ForeignKey(
         'record.Person',
-        related_name='person',
+        related_name='person_contact',
         on_delete=models.CASCADE
     )
 
@@ -27,12 +27,12 @@ class Contact(BaseModel):
         on_delete=models.CASCADE
     )
 
-    contact_date = models.DateField()
+    contact_date = models.DateField(null=True)
     contact_type = models.CharField(max_length=100)
     insolation_days = models.IntegerField(default=0)
 
     is_active = models.BooleanField(
-        'active_status',
+        'active_contact',
         default=False
     )
 
