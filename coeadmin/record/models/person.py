@@ -26,7 +26,10 @@ class Person(BaseModel):
         unique=True,
     )
     
-    date_birth = models.DateField()
+    date_birth = models.DateField(
+        null=True,
+        blank=True,
+    )
     
     gender = models.CharField(max_length=10)
 

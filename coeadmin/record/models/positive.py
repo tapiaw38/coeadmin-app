@@ -32,9 +32,16 @@ class Positive(BaseModel):
     )
 
     positivity_date = models.DateField()
-    variant_type = models.CharField(max_length=100)
-    laboratory = models.CharField(max_length=100)
-
+    variant_type = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True
+    )
+    laboratory = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True
+    )
     contacts = models.ManyToManyField(
         'record.Person', 
         related_name='contacts',
