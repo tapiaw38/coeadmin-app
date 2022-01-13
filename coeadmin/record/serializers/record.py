@@ -1,7 +1,7 @@
 """ Record serializers. """
 
 # Django REST Framework
-from datetime import datetime
+from datetime import datetime, timedelta
 from rest_framework import serializers
 
 
@@ -48,6 +48,7 @@ class PositiveModelSerializer(serializers.ModelSerializer):
             'positivity_date',
             'variant_type',
             'laboratory',
+            'is_active',
             'contacts_count',
             'isolation',
         )
@@ -70,9 +71,15 @@ class PositiveModelSerializer(serializers.ModelSerializer):
 
         # Create the positive isolation.
         
+        print(isolation_data)
+
         Isolation.objects.create(
             positivity=positive,
-            **isolation_data
+            isolation_date=isolation_data['isolation_date'],
+            days_isolation=isolation_data['days_isolation'],
+            high_insulation=isolation_data['high_insulation'],
+            high_insulation_date=isolation_data['isolation_date'] + \
+                                                    timedelta(days=isolation_data['days_isolation'])            
         )
         
         return positive
@@ -102,7 +109,11 @@ class PositiveModelSerializer(serializers.ModelSerializer):
             'laboratory', 
             instance.laboratory
         )
-
+        instance.is_active = validate_data.get(
+            'is_active',
+            instance.is_active
+        )
+        
         instance.save()
 
         # Update the positive isolation.
@@ -119,12 +130,15 @@ class PositiveModelSerializer(serializers.ModelSerializer):
             'high_insulation',
             isolation.high_insulation
         )
+        isolation.high_insulation_date = isolation_data.get(
+            'isolation_date',
+            isolation.high_insulation_date
+        ) + timedelta(days=isolation_data['days_isolation'])
 
-        if isolation.high_insulation == True:
-            isolation.high_insulation_date = datetime.today().strftime('%Y-%m-%d')
-            
-        elif isolation.high_insulation == False:
-            isolation.high_insulation_date = None
+        isolation.save()
+
+        return instance
+
             
         isolation.save()
 
@@ -135,6 +149,7 @@ class ListPositiveSerializer(serializers.ModelSerializer):
     """ List positive serializer. """
 
     person = PersonModelSerializer()
+    isolation = IsolationSerializer()
 
     class Meta:
         """ Meta class. """
@@ -147,6 +162,8 @@ class ListPositiveSerializer(serializers.ModelSerializer):
             'positivity_date',
             'variant_type',
             'laboratory',
+            'is_active',
             'contacts_count',
-            'isolation',
+            'is_active',
+            'isolation'
         )

@@ -36,4 +36,10 @@ class RecordViewSet(mixins.ListModelMixin,
         if self.action == 'list':
             return ListPositiveSerializer
         return PositiveModelSerializer
+    
+    def perform_destroy(self, instance):
+        """ Change status positive at false. """
+
+        instance.is_active = False
+        instance.save()
         

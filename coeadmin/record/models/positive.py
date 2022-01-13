@@ -42,6 +42,11 @@ class Positive(BaseModel):
         through_fields=('positive', 'person'),
     )
 
+    is_active = models.BooleanField(
+        'active_positive',
+        default=True
+    )
+
     @property
     def contacts_count(self):
         """ Return the number of contacts. """

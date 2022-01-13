@@ -46,6 +46,7 @@ class PersonModelSerializer(serializers.ModelSerializer):
             'document',
             'date_birth',
             'gender',
+            'phone_number',
             'location'
         )
     
@@ -95,6 +96,11 @@ class PersonModelSerializer(serializers.ModelSerializer):
             'gender',
             instance.gender
         )
+        instance.phone_number = validate_data.get(
+            'phone_number',
+            instance.phone_number
+        )
+
         instance.save()
 
         # Update the person location.
