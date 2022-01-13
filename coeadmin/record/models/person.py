@@ -29,6 +29,7 @@ class Person(BaseModel):
     date_birth = models.DateField(
         null=True,
         blank=True,
+        default=None
     )
     
     gender = models.CharField(max_length=10)
