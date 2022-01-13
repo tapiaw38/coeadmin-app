@@ -5,7 +5,7 @@ from .base import env
 
 # Base
 SECRET_KEY = env('DJANGO_SECRET_KEY')
-ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['tratohecho.net.ar','www.tratohecho.net.ar'])
+ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['agrapi.com.ar','www.agrapi.com.ar'])
 
 # Databases
 DATABASES['default'] = env.db('DATABASE_URL')  # NOQA
