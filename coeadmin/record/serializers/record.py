@@ -52,6 +52,17 @@ class PositiveModelSerializer(serializers.ModelSerializer):
             'contacts_count',
             'isolation',
         )
+    
+    def to_representation(self, instance):
+        """ Represent the positive. """
+
+        representation = super().to_representation(instance)
+
+        representation['person'] = PersonModelSerializer(
+            instance.person,
+        ).data
+
+        return representation
 
     def create(self, validate_data):
         """ Create the positive. """
@@ -70,8 +81,6 @@ class PositiveModelSerializer(serializers.ModelSerializer):
         )
 
         # Create the positive isolation.
-        
-        print(isolation_data)
 
         Isolation.objects.create(
             positivity=positive,
