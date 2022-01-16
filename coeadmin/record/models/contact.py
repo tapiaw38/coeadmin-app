@@ -30,6 +30,7 @@ class Contact(BaseModel):
     contact_date = models.DateField(null=True)
     contact_type = models.CharField(max_length=100)
     insolation_days = models.IntegerField(default=0)
+    high_insulation_date = models.DateField(blank=True, null=True)
 
     is_active = models.BooleanField(
         'active_contact',

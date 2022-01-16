@@ -1,7 +1,6 @@
 """ Record serializers. """
 
 # Django REST Framework
-from datetime import datetime, timedelta
 from rest_framework import serializers
 
 
@@ -14,6 +13,8 @@ from coeadmin.record.models import (
 # Serializers
 from coeadmin.record.serializers.person import PersonModelSerializer
 
+# Utilities
+from datetime import datetime, timedelta
 
 class IsolationSerializer(serializers.ModelSerializer):
     """ Isolation serializer. """
