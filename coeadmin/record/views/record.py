@@ -21,6 +21,7 @@ class RecordViewSet(mixins.ListModelMixin,
                     mixins.CreateModelMixin,
                     mixins.RetrieveModelMixin,
                     mixins.UpdateModelMixin,
+                    mixins.DestroyModelMixin,
                     viewsets.GenericViewSet):
     """ Record view set. """
 
