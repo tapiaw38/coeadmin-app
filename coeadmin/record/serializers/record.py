@@ -149,11 +149,6 @@ class PositiveModelSerializer(serializers.ModelSerializer):
 
         return instance
 
-            
-        isolation.save()
-
-        return instance
-
 
 class ListPositiveSerializer(serializers.ModelSerializer):
     """ List positive serializer. """

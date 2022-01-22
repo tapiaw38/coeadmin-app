@@ -44,3 +44,4 @@ class RecordViewSet(mixins.ListModelMixin,
         instance.is_active = False
         instance.save()
         
+        return instance
